@@ -1,5 +1,5 @@
 # Potentials.jl
-Reviving the glories of Artificial Potential Functions for fast, reactive motion control.
+Reviving the glories of Artificial Potential Fields for fast, reactive motion control.
 
 Implements goal-receding attractor potentials for more stable whole-body motions.
 
