@@ -1,7 +1,7 @@
 using Revise
 using Potentials
 
-θ = [5.5, 1.1]
+θ = [5.5, 0.8]
 θ̇ = [0.0, 0.0]
 Obstacles = [[-2.0, 0.0]]
 Obstacle_radii = [2.8]
@@ -15,13 +15,16 @@ sys.show_tail = true
 sys.dynamic = false
 sys.obstacle_speed = 0.01
 ax, fig = visualize_system!(sys)
-horizon = 1000
+
+tasks = [:attractor, :repeller]
+prob = Problem(tasks, sys)
+horizon = 500
 
 for i=1:horizon 
     global θ, θ̇
-    if sys.dynamic move_obstacles!(sys) end
-    θ̈ = potential_force(θ, θ̇ , sys)
-    step!(θ̈, sys)
-    θ = sys.x; θ̇ = sys.ẋ
-    sleep(sys.Δt/horizon)
+    if prob.sys.dynamic move_obstacles!(prob.sys) end
+    τ = potential_solve(θ, θ̇ , prob)
+    step!(τ, prob)
+    θ = prob.sys.x; θ̇ = prob.sys.ẋ
+    sleep(prob.sys.Δt/horizon)
 end

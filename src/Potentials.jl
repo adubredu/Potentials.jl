@@ -8,18 +8,21 @@ using StaticArrays
 using Colors
 
 include("utils.jl")
+include("types.jl")
 
 include("systems/pointmass/types.jl")
 include("systems/pointmass/step.jl")
 include("systems/pointmass/visualize.jl")
 include("systems/pointmass/potential.jl")
+include("systems/pointmass/old_potential.jl")
 
 export visualize_system!,
-       step!
+       step!,
+       Problem
 
-export PointMass,
-       attractor_force,
+export PointMass, 
        move_obstacles!,
+       potential_solve,
        potential_force
 
 end
