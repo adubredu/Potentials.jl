@@ -1,7 +1,7 @@
 using Revise
 using Potentials
 
-θ = [5.5, 0.8]
+θ = [6.0, 0.0]
 θ̇ = [0.0, 0.0]
 Obstacles = [[-2.0, 0.0]]
 Obstacle_radii = [2.8]

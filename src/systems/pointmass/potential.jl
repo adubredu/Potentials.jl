@@ -1,7 +1,22 @@
+function recede_goal(θ, sys; ∇=[0.0, -1.5])
+    g = copy(sys.g)
+    Δrobot = (g[2]-θ[2])/(g[1]-θ[1])
+    Δobs = []
+    for i in eachindex(sys.or)
+        o = sys.o[i] 
+        Δ = (g[2]-o[2])/(g[1]-o[1]) 
+        push!(Δobs, Δ)    
+    end
+    if any([abs(Δrobot-Δ)<0.5 for Δ in Δobs]) 
+        g+=∇ 
+    end
+    return g
+end
+
 ### Task maps
 function attractor_task_map(θ, θ̇, prob::Problem)
     sys = prob.sys
-    g = sys.g
+    g = recede_goal(θ, sys)
     res = θ-g 
     return res
 end

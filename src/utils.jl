@@ -1,4 +1,4 @@
-function get_keypoints(c, r::Float64; N = 64)
+function get_keypoints(c, r::Float64; N = 16)
     Δθ = 2π/N
     θs = 0: Δθ : 2π
     keypoints = [[c[1]+r*cos(θ), c[2]+r*sin(θ)] for θ in θs]
