@@ -60,7 +60,7 @@ function potential_eval(x, ẋ, name::Symbol, prob::Problem)
     return f
 end
 
-function potential_solve(θ, θ̇, prob::Problem)
+function potential_solve(θ, θ̇, prob::Problem, sys::PointMass)
     Js = []; fs = []
     for t in prob.tasks 
         ψ = eval(Symbol(t, :_task_map))

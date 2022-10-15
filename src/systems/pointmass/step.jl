@@ -1,4 +1,4 @@
-function step!(ẍ::Vector{Float64}, prob::Problem)
+function step!(ẍ::Vector{Float64}, prob::Problem, sys::PointMass)
     # x = sys.x + sys.ẋ * sys.Δt
     # ẋ = sys.ẋ + ẍ * sys.Δt 
     # ẋ = clamp.(ẋ, -15.0, 15.0)

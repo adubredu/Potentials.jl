@@ -23,8 +23,8 @@ horizon = 500
 for i=1:horizon 
     global θ, θ̇
     if prob.sys.dynamic move_obstacles!(prob.sys) end
-    τ = potential_solve(θ, θ̇ , prob)
-    step!(τ, prob)
+    τ = potential_solve(θ, θ̇ , prob, sys)
+    step!(τ, prob, sys)
     θ = prob.sys.x; θ̇ = prob.sys.ẋ
     sleep(prob.sys.Δt/horizon)
 end
