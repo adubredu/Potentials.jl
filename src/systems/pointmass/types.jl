@@ -23,8 +23,8 @@ mutable struct PointMass
         λ = 0.7
         Δt = 1e-3
         obstacle_speed = 0.017
-        M = 10.5
-        max_range = 5.0
+        M = 5.0
+        max_range = 10.0
         task_maps = [:attractor, :repeller]
         new(robot_position, robot_velocity, robot_radius, obstacle_positions, 
             obstacle_radii, k, λ, Δt, goal_position, M, max_range,

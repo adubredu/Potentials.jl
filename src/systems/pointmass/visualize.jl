@@ -30,7 +30,7 @@ function visualize_system!(sys::PointMass)
     sys.obs_tail = tail
     sys.obs_o = obstacle_observables
 
-    hidedecorations!(ax)
+    # hidedecorations!(ax)
     display(fig)
     
     return ax, fig
