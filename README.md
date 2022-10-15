@@ -1,7 +1,10 @@
 # Potentials.jl
 Reviving the glories of Artificial Potential Fields for fast, reactive motion control.
 
-Implements goal-receding attractor potentials for more stable whole-body motions.
+## Features
+* Implements goal-receding attractor potentials to escape local minima imposed by obstacle repulsion fields
+
+* Implements a velocity-based control scheme for more stable whole-body robot motions
 
 ## Installation
 1. Open your Julia REPL by typing  `julia` in your terminal.
