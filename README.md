@@ -3,7 +3,6 @@ Reviving the glories of Artificial Potential Fields for fast, reactive motion co
 
 ## Features
 * Implements goal-receding attractor potentials to escape local minima imposed by obstacle repulsion fields
-
 * Implements a velocity-based control scheme for more stable whole-body robot motions
 
 ## Installation
