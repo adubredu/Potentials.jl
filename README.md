@@ -1,6 +1,6 @@
 # Potentials.jl
 
-<center><img src="media/pickle.gif" width="200" height="180" /></center>
+<img src="media/pickle.gif" width="200" height="180" />
 
 Reviving the glories of Artificial Potential Fields for fast, reactive motion control.
 
