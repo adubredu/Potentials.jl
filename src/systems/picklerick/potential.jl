@@ -34,7 +34,7 @@ end
 ### Potentials 
 function posture_potential(x, ẋ, prob::Problem)
     sys = prob.sys
-    K = sys.M
+    K = sys.M/2
     ϕ(x) = 0.5*x'*K*x
     δₓ = FiniteDiff.finite_difference_gradient(ϕ, x)
     f = -K*δₓ

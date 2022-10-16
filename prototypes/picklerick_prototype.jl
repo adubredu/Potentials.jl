@@ -5,7 +5,7 @@ using Potentials
 θ̇ = [0.0, 0.0]
 Obstacles = [[-4.0, 3.5]]
 Obstacle_radii = [1.0]
-goal = [-3.0, 4.5]
+goal = [-2.0, 4.0]
 
 init_joint_positions = zeros(10)
 
