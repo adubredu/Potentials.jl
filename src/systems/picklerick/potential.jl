@@ -8,8 +8,28 @@ end
 function lefthand_attractor_task_map(θ, θ̇, prob::Problem)
     sys = prob.sys
     x₉ = sys.g
-    chains = link_poses(θ, sys)
-    xh = chains[5][end]
+    xh = left_hand_pose(θ, sys)
+    return xh - x₉
+end
+
+function righthand_attractor_task_map(θ, θ̇, prob::Problem)
+    sys = prob.sys
+    x₉ = sys.g
+    xh = right_hand_pose(θ, sys)
+    return xh - x₉
+end
+
+function head_attractor_task_map(θ, θ̇, prob::Problem)
+    sys = prob.sys
+    x₉ = sys.g[1] 
+    xh = head_pose(θ, sys)
+    return xh - x₉
+end
+
+function waist_attractor_task_map(θ, θ̇, prob::Problem)
+    sys = prob.sys
+    x₉ = sys.g[3] 
+    xh = head_pose(θ, sys)
     return xh - x₉
 end
 
@@ -34,7 +54,7 @@ end
 ### Potentials 
 function posture_potential(x, ẋ, prob::Problem)
     sys = prob.sys
-    K = sys.M/2
+    K = sys.M/3
     ϕ(x) = 0.5*x'*K*x
     δₓ = FiniteDiff.finite_difference_gradient(ϕ, x)
     f = -K*δₓ
@@ -43,7 +63,34 @@ end
 
 function lefthand_attractor_potential(x, ẋ, prob::Problem)
     sys = prob.sys
-    K = sys.M
+    K = 2*sys.M
+    ϕ(x) = 0.5*x'*K*x
+    δₓ = FiniteDiff.finite_difference_gradient(ϕ, x)
+    f = -K*δₓ
+    return f
+end
+
+function righthand_attractor_potential(x, ẋ, prob::Problem)
+    sys = prob.sys
+    K = 2*sys.M
+    ϕ(x) = 0.5*x'*K*x
+    δₓ = FiniteDiff.finite_difference_gradient(ϕ, x)
+    f = -K*δₓ
+    return f
+end
+
+function head_attractor_potential(x, ẋ, prob::Problem)
+    sys = prob.sys
+    K = 3*sys.M
+    ϕ(x) = 0.5*x'*K*x
+    δₓ = FiniteDiff.finite_difference_gradient(ϕ, x)
+    f = -K*δₓ
+    return f
+end
+
+function waist_attractor_potential(x, ẋ, prob::Problem)
+    sys = prob.sys
+    K = 3*sys.M
     ϕ(x) = 0.5*x'*K*x
     δₓ = FiniteDiff.finite_difference_gradient(ϕ, x)
     f = -K*δₓ

@@ -83,6 +83,41 @@ function compute_COM(θ, env::PickleRick)
     return (xcm, ycm)
 end
 
+function left_hand_pose(θ, env)
+    poses = link_poses(θ, env)
+    return poses[5][end]
+end
+
+function right_hand_pose(θ, env)
+    poses = link_poses(θ, env)
+    return poses[4][end]
+end
+
+function left_foot_pose(θ, env)
+    poses = link_poses(θ, env)
+    return poses[1][end]
+end
+
+function right_foot_pose(θ, env)
+    poses = link_poses(θ, env)
+    return poses[2][end]
+end
+
+function head_pose(θ, env)
+    poses = link_poses(θ, env)
+    return poses[3][end]
+end
+
+function neck_pose(θ, env)
+    poses = link_poses(θ, env)
+    return poses[6][end]
+end
+
+function waist_pose(θ, env)
+    poses = link_poses(θ, env)
+    return poses[5][1]
+end
+
 function visualize_system!(env::PickleRick)
     object_positions = env.o 
     obstacle_radii = env.r*2
